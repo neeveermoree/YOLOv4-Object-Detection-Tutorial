@@ -102,35 +102,27 @@ class DownSample1(nn.Module):
 
         self.conv2 = Conv_Bn_Activation(32, 64, 3, 2, 'mish')
         self.conv3 = Conv_Bn_Activation(64, 64, 1, 1, 'mish')
-        # [route]
-        # layers = -2
         self.conv4 = Conv_Bn_Activation(64, 64, 1, 1, 'mish')
 
         self.conv5 = Conv_Bn_Activation(64, 32, 1, 1, 'mish')
         self.conv6 = Conv_Bn_Activation(32, 64, 3, 1, 'mish')
-        # [shortcut]
-        # from=-3
-        # activation = linear
 
         self.conv7 = Conv_Bn_Activation(64, 64, 1, 1, 'mish')
-        # [route]
-        # layers = -1, -7
         self.conv8 = Conv_Bn_Activation(128, 64, 1, 1, 'mish')
 
     def forward(self, input):
         x1 = self.conv1(input)
         x2 = self.conv2(x1)
         x3 = self.conv3(x2)
-        # route -2
+
         x4 = self.conv4(x2)
         x5 = self.conv5(x4)
         x6 = self.conv6(x5)
-        # shortcut -3
+
         x6 = x6 + x4
 
         x7 = self.conv7(x6)
-        # [route]
-        # layers = -1, -7
+
         x7 = torch.cat([x7, x3], dim=1)
         x8 = self.conv8(x7)
         return x8
