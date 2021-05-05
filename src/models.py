@@ -133,14 +133,11 @@ class DownSample2(nn.Module):
         super().__init__()
         self.conv1 = Conv_Bn_Activation(64, 128, 3, 2, 'mish')
         self.conv2 = Conv_Bn_Activation(128, 64, 1, 1, 'mish')
-        # r -2
         self.conv3 = Conv_Bn_Activation(128, 64, 1, 1, 'mish')
 
         self.resblock = ResBlock(ch=64, nblocks=2)
 
-        # s -3
         self.conv4 = Conv_Bn_Activation(64, 64, 1, 1, 'mish')
-        # r -1 -10
         self.conv5 = Conv_Bn_Activation(128, 128, 1, 1, 'mish')
 
     def forward(self, input):
