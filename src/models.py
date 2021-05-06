@@ -257,7 +257,7 @@ class Neck(nn.Module):
         self.upsample2 = Upsample()
 
         self.conv15 = Conv_Bn_Activation(256, 128, 1, 1, 'leaky')
-        
+
         self.conv16 = Conv_Bn_Activation(256, 128, 1, 1, 'leaky')
         self.conv17 = Conv_Bn_Activation(128, 256, 3, 1, 'leaky')
         self.conv18 = Conv_Bn_Activation(256, 128, 1, 1, 'leaky')
@@ -268,21 +268,21 @@ class Neck(nn.Module):
         x1 = self.conv1(input)
         x2 = self.conv2(x1)
         x3 = self.conv3(x2)
-        # SPP
+
         m1 = self.maxpool1(x3)
         m2 = self.maxpool2(x3)
         m3 = self.maxpool3(x3)
         spp = torch.cat([m3, m2, m1, x3], dim=1)
-        # SPP end
+
         x4 = self.conv4(spp)
         x5 = self.conv5(x4)
         x6 = self.conv6(x5)
         x7 = self.conv7(x6)
-        # UP
+
         up = self.upsample1(x7, downsample4.size(), self.inference)
-        # R 85
+
         x8 = self.conv8(downsample4)
-        # R -1 -3
+        
         x8 = torch.cat([x8, up], dim=1)
 
         x9 = self.conv9(x8)
@@ -292,11 +292,10 @@ class Neck(nn.Module):
         x13 = self.conv13(x12)
         x14 = self.conv14(x13)
 
-        # UP
         up = self.upsample2(x14, downsample3.size(), self.inference)
-        # R 54
+
         x15 = self.conv15(downsample3)
-        # R -1 -3
+
         x15 = torch.cat([x15, up], dim=1)
 
         x16 = self.conv16(x15)
