@@ -319,10 +319,8 @@ class Yolov4Head(nn.Module):
                                 anchors=[12, 16, 19, 36, 40, 28, 36, 75, 76, 55, 72, 146, 142, 110, 192, 243, 459, 401],
                                 num_anchors=9, stride=8)
 
-        # R -4
         self.conv3 = Conv_Bn_Activation(128, 256, 3, 2, 'leaky')
 
-        # R -1 -16
         self.conv4 = Conv_Bn_Activation(512, 256, 1, 1, 'leaky')
         self.conv5 = Conv_Bn_Activation(256, 512, 3, 1, 'leaky')
         self.conv6 = Conv_Bn_Activation(512, 256, 1, 1, 'leaky')
@@ -336,10 +334,8 @@ class Yolov4Head(nn.Module):
                                 anchors=[12, 16, 19, 36, 40, 28, 36, 75, 76, 55, 72, 146, 142, 110, 192, 243, 459, 401],
                                 num_anchors=9, stride=16)
 
-        # R -4
         self.conv11 = Conv_Bn_Activation(256, 512, 3, 2, 'leaky')
 
-        # R -1 -37
         self.conv12 = Conv_Bn_Activation(1024, 512, 1, 1, 'leaky')
         self.conv13 = Conv_Bn_Activation(512, 1024, 3, 1, 'leaky')
         self.conv14 = Conv_Bn_Activation(1024, 512, 1, 1, 'leaky')
