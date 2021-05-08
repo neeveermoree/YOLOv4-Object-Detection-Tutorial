@@ -354,7 +354,7 @@ class Yolov4Head(nn.Module):
         x2 = self.conv2(x1)
 
         x3 = self.conv3(input1)
-        # R -1 -16
+
         x3 = torch.cat([x3, input2], dim=1)
         x4 = self.conv4(x3)
         x5 = self.conv5(x4)
@@ -364,9 +364,8 @@ class Yolov4Head(nn.Module):
         x9 = self.conv9(x8)
         x10 = self.conv10(x9)
 
-        # R -4
         x11 = self.conv11(x8)
-        # R -1 -37
+
         x11 = torch.cat([x11, input3], dim=1)
 
         x12 = self.conv12(x11)
