@@ -400,10 +400,10 @@ class Yolov4(nn.Module):
         self.down4 = DownSample4()
         self.down5 = DownSample5()
         # neck
-        self.neek = Neck(inference)
+        self.neck = Neck(inference)
         # yolov4conv137
         if yolov4conv137weight:
-            _model = nn.Sequential(self.down1, self.down2, self.down3, self.down4, self.down5, self.neek)
+            _model = nn.Sequential(self.down1, self.down2, self.down3, self.down4, self.down5, self.neck)
             pretrained_dict = torch.load(yolov4conv137weight)
 
             model_dict = _model.state_dict()
