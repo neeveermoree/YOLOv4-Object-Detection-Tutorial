@@ -401,19 +401,18 @@ class Yolov4(nn.Module):
         self.down5 = DownSample5()
         # neck
         self.neck = Neck(inference)
-        # yolov4conv137
+
         if yolov4conv137weight:
             _model = nn.Sequential(self.down1, self.down2, self.down3, self.down4, self.down5, self.neck)
             pretrained_dict = torch.load(yolov4conv137weight)
 
             model_dict = _model.state_dict()
-            # 1. filter out unnecessary keys
+
             pretrained_dict = {k1: v for (k, v), k1 in zip(pretrained_dict.items(), model_dict)}
-            # 2. overwrite entries in the existing state dict
+
             model_dict.update(pretrained_dict)
             _model.load_state_dict(model_dict)
         
-        # head
         self.head = Yolov4Head(output_ch, n_classes, inference)
 
 
