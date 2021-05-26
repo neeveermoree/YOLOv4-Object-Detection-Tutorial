@@ -1,15 +1,3 @@
-# -*- coding: utf-8 -*-
-'''
-@Time          : 2020/05/06 15:07
-@Author        : Tianxiaomo
-@File          : train.py
-@Noice         :
-@Modificattion :
-    @Author    :
-    @Time      :
-    @Detail    :
-
-'''
 import time
 import logging
 import os, sys, math
