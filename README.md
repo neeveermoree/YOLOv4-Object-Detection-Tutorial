@@ -7,6 +7,8 @@ Interactive tutorial with code, images, explanations and animations.
 
 You should start from [0th lesson](/ipynb/0-introduction.ipynb).
 
+Example to train model on a custom dataset is [here](/ipynb/Yolov4_Traffic_sign_detection.ipynb)
+
 ---
 References
 
