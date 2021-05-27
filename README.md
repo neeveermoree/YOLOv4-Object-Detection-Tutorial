@@ -7,7 +7,7 @@ Interactive tutorial with code, images, explanations and animations.
 
 You should start from [0th lesson](/ipynb/0-introduction.ipynb).
 
-You can also learn YOLO-v4 object detection algorithm online via [Binder](https://hub.gke2.mybinder.org/user/neeveermoree-yo-ection-tutorial-q5x1va2t/tree)
+You can also learn YOLO-v4 object detection algorithm online via [Binder](https://mybinder.org/v2/gh/neeveermoree/YOLOv4-Object-Detection-Tutorial/HEAD)
 
 Example to train model on a custom dataset is [here](/ipynb/Yolov4_Traffic_sign_detection.ipynb)
 
